@@ -8,6 +8,10 @@ resource "aws_iam_user" "user" {
   force_destroy = "${var.force_destroy}"
 }
 
+resource "aws_iam_group" "group" {
+  name = "test-group"
+}
+
 resource "aws_iam_group_membership" "team" {
   name = "tf-testing-group-membership"
 
@@ -18,9 +22,7 @@ resource "aws_iam_group_membership" "team" {
   group = "${aws_iam_group.group.name}"
 }
 
-resource "aws_iam_group" "group" {
-  name = "test-group"
-}
+
 
 resource "aws_iam_group_policy" "policy" {
   name  = "policy"
